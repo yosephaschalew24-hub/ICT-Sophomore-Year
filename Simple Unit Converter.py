@@ -1,15 +1,19 @@
-def Temp_Conversion(Reading,Type):
+def Conversion(Reading, Type):
     if Type == "C2F":
-        result = round((Reading * 9/5) + 32 , 2)
-        print(f"{Reading}º C is equal to {result}º F.")
+        result = round((Reading * 9/5) + 32, 2)
+        print(f"{Reading}ºC is equal to {result}ºF.")
     elif Type == "F2C":
-        result = round((Reading - 32) * 5/9 , 2)
-        print(f"{Reading}º F is equal to {result}º C.")
+        result = round((Reading - 32) * 5/9, 2)
+        print(f"{Reading}ºF is equal to {result}ºC.")
+    elif Type == "M2F":
+        result = round(Reading * 3.28084, 2)
+        print(f"{Reading} meters is equal to {result} feet.")
+    elif Type == "F2M":
+        result = round(Reading / 3.28084, 2)
+        print(f"{Reading} feet is equal to {result} meters.")
     else:
-        print("Please input a valid conversion type.")
-        
-Reading = float(input("Please enter your temperature reading:"))
-Type = input("Please input your desired conversion type, either C2F or F2C.")
-Temp_Conversion(Reading,Type)
-    
+        print("Please input a valid conversion type (C2F, F2C, M2F, or F2M).")
 
+Reading = float(input("Please enter your reading (temperature or length): "))
+Type = input("Please input your desired conversion type (C2F, F2C, M2F, or F2M): ")
+Conversion(Reading, Type)
