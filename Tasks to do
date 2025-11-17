@@ -1,0 +1,61 @@
+to_do = []
+
+def add():
+    new = input("Add new task: ").strip()
+    if new:
+        to_do.append(new)
+        print(f'Added: "{new}"')
+    else:
+        print("No task entered.")
+
+def remove():
+    if not to_do:
+        print("No tasks to remove.")
+        return
+    show_list()
+    rem = input("What task should we remove? ").strip()
+    if rem in to_do:
+        to_do.remove(rem)
+        print(f'Removed: "{rem}"')
+    else:
+        print(f'"{rem}" not found in your list.')
+
+def show_list():
+    if not to_do:
+        print("No tasks available. Please add some tasks.")
+    else:
+        print("Your to-do list:")
+        for i, task in enumerate(to_do, 1):
+            print(f"{i}. {task}")
+
+def main():
+    print("Welcome! What should we do today?")
+    print("Press 1 to add new tasks.")
+    print("Press 2 to remove any existing tasks.")
+    print("Press 3 to remove all existing tasks.")
+    try:
+        user_input = int(input("> ").strip())
+    except ValueError:
+        print("Invalid input. Please enter a number (1-3).")
+        return
+
+    if user_input == 1:
+        add()
+    elif user_input == 2:
+        remove()
+    elif user_input == 3:
+        to_do.clear()
+        print("All tasks removed.")
+    else:
+        print("Invalid input. Please try again.")
+
+while True:
+    main()
+    keep_going = input("Press 4 to see your list. Press 5 to go back to the main menu: ").strip()
+    if keep_going == '4':
+        show_list()
+        continue  
+    elif keep_going == '5':
+        continue
+    else:
+        print("Invalid choice")
